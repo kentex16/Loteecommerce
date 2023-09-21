@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Inquire;
 
 class AdminController extends Controller
 {
@@ -101,4 +102,5 @@ class AdminController extends Controller
         
         return redirect()->back()->with('message','Successfully Updated');
     }
+    
 }

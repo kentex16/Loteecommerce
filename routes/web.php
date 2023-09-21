@@ -1,6 +1,6 @@
 <?php
 
-use App\Notifications\InquiryReceived;
+
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -11,6 +11,7 @@ use App\Livewire\UserItems;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\MessageController;
 use App\Models\User;
+Use App\Http\Controllers\InquiryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,3 +56,8 @@ route::get('/view_products',[HomeController ::class,'view_products']);
 Route::get('/notifications/fetch', 'NotificationController@fetch')->name('notifications.fetch');
 Route::post('/send-notification', 'NotificationController@sendNotification')->name('send-notification');
 Route::post('updateUserRole', [HomeController::class, 'updateUserRole'])->name('update.user.role');
+route::get('/gotoseller',[HomeController ::class,'gotoseller']);
+route::get('/inquiry_page',[InquiryController ::class,'inquiry_page']);
+Route::post('/add_inquiry', [InquiryController::class, 'add_inquiry'])->name('add_inquiry');
+Route::get('/showInquiries', [InquiryController::class, 'showInquiries'])->name('showInquiries');
+route::get('/gotoinquiries',[InquiryController ::class,'gotoinquiries']);

@@ -8,8 +8,9 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Property;
-
-
+use App\Notifications\ProductAddedNotification;
+use Illuminate\Support\Facades\Notification;
+use App\Events\ProductAddedEvent;
 
 class HomeController extends Controller
 {
@@ -81,6 +82,8 @@ class HomeController extends Controller
             
             $product->save();
 
+            
+
             return redirect()->back()->with('message','Successfully Added');
     }
     public function showProduct($productId)
@@ -101,9 +104,11 @@ public function showProductDetails($productId,Request $request)
     // Get the authenticated user (seller)
     $sellerName = Auth::user()->name;
     $propertyId = $request->input('property_id');
-    $property = Property::find($propertyId); 
+    $property = Property::find($propertyId);
+    $inquire = $product->inquire;
+     
 
-    return view('product-details', compact('product', 'sellerName','property'));
+    return view('product-details', compact('product', 'sellerName','property','inquire'));
 }
 public function showUserItems()
 {
@@ -159,6 +164,13 @@ public function updateOnlineStatus(Request $request)
         $user->update(['is_online' => true]);
     }
 }
+public function gotoseller()
+{
+    $product=product::all();
+    $category=category::all();;
+    return view ('home.seller',compact('product','category'));
+}
+
 }
 
 

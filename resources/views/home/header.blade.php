@@ -128,7 +128,17 @@ iframe {
                   <button class="small-button" type="submit">Update Role</button>
               </form>
               
-
+              <div id="chatify-popup">
+                <div id="resize-handle"></div>
+                <button id="toggle-chatify">Open Chat</button>
+                
+                <div id="chatify-iframe-container">
+                    <iframe src="http://127.0.0.1:8000/chatify"></iframe>
+                    <button id="close-chatify">Close</button>
+                    
+                </div>
+                
+            </div>
                
                
                @else
@@ -142,15 +152,23 @@ iframe {
                @endauth
                 @endif
 
-                <div id="chatify-popup">
-                  <div id="resize-handle"></div>
-                  <button id="toggle-chatify">Open Chat</button>
-                  <div id="chatify-iframe-container">
-                      <iframe src="http://127.0.0.1:8000/chatify"></iframe>
-                      <button id="close-chatify">Close</button>
-                  </div>
-              </div>
-              
+               
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                        <i class="fa fa-bell"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        @if (session('message'))
+                            <li>
+                                <a href="">{{ session('message') }}</a>
+                            </li>
+                        @endif
+                        <li>
+                            <a href="">To be fixed soon</a>
+                        </li>
+                    </ul>
+                </li>
+                
               
               
               

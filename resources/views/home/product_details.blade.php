@@ -70,9 +70,10 @@
             
             {{$product->property_type}}</strong> 
       </h6>
-      <a href="#" class="btn btn-primary" id="inquire-button">
+      <a href="{{ url('/inquiry_page') }}" class="btn btn-primary" id="inquire-button">
          Inquire
      </a>
+     
      
      
           
@@ -80,10 +81,6 @@
         </div>
      </div>
     </div>
-
-
-
-
 
       @include ('home.footer')
       

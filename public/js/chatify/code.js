@@ -887,7 +887,7 @@ function getContacts() {
       },
       error: (error) => {
         setContactsLoading(false);
-        console.error(error);
+        
       },
     });
   }

@@ -31,19 +31,22 @@
                 <div class="option_container">
                    <div class="options">
                     @if (Auth::check())
-                        <a href="{{ url('product_details', $products->id) }}" class="option1">
-                            Details
-                        </a>
-                    @else
-                        <a href="{{ route('login') }}" class="option1">
-                            Login to View
-                        </a>
-                    @endif
-                    <a href="{{ Auth::check() ? '#' : route('login') }}" class="option2">
-                        {{ Auth::check() ? 'Inquire Now' : 'Login to Inquire' }}
+                    <a href="{{ url('product_details', $products->id) }}" class="option1">
+                        Details
                     </a>
-                    
-                    
+                    <a href="{{ url('/inquiry_page') }}" class="option2">
+                        Inquire Now
+                    </a>
+                @elseif (!Auth::check())
+                    <a href="{{ route('login') }}" class="option1">
+                        Login to View
+                    </a>
+    
+                    <a href="{{ route('login') }}" class="option2">
+                        Login to Inquire
+                    </a>
+                @endif
+                
                    </div>
                 </div>
                 <div class="img-box">

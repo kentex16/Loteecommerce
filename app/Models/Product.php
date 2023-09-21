@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Notifications\ProductAddedNotification;
 
 class Product extends Model
 {
@@ -12,6 +13,11 @@ class Product extends Model
     {
         return $this->belongsTo(User::class, 'user_id'); 
     }
+    public function inquiries()
+    {
+        return $this->hasMany(Inquire::class, 'product_id');
+    }
+    
 }
 
 
