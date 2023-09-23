@@ -64,6 +64,51 @@ iframe {
     top: 0;
     left: 0;
 }
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between product boxes as needed */
+}
+
+.product-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: calc(5% - 10px);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.product-location {
+    font-style: italic;
+    margin: 5px 0;
+}
+.product-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    transition: all 0.3s ease; 
+}
+
+.product-box:hover {
+    background: var(--color);
+    color: #050801;
+    box-shadow: 0 0 5px var(--color),
+                0 0 25px var(--color),
+                0 0 50px var(--color),
+                0 0 200px var(--color);
+
+}   
       </style>
       <!-- Basic -->
       <meta charset="utf-8" />
@@ -112,12 +157,15 @@ iframe {
                         <a class="nav-link" href="{{url('/view_seller')}}">SELL</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="{{url('showInquiries')}}">Inquiries</a>
+                        <a class="nav-link" href="{{url('showInquiries')}}">My Products</a>
                      </li>
                      <ul class="navbar-nav">
-                       <li class="nav-item">
-                           <a class="nav-link" href="{{ url('/') }}">Message</a>
-                       </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('gotoinquiries') }}">Interests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class ="nav-link"href="{{url('/view_profile')}}">Visit Profile</a>
+                          </li>
                        <li class="nav-item">
                            <form class="access-chatify-form" action="http://127.0.0.1:8000/chatify" method="GET">
                                <button type="submit" class="nav-link">Chat</button>
@@ -185,37 +233,33 @@ iframe {
          <!-- slider section -->
          
          <div class="col-sm-12">
-            <table class="table table-bordered">
-                <tr>
-                    <th>Image</th>
-                    <th>Product Title</th>
-                    <th>Location</th>
-                    <th>Seller</th>
-                    <th>Lot Area (SQM)</th>
-                    <th>Price (₱)</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Property Type</th>
-                </tr>
+            <div class="heading_container heading_center">
+                <h2>
+                   My<span> Listed Products</span>
+                </h2>
+             </div>
+            <div class="product-list">
+                
                 @foreach($products as $product)
-                <tr>
-                    <td>
-                        <img src="product/{{$product->image}}" alt="" width="100">
-                    </td>
-                    <td>{{$product->title}}</td>
-                    <td>{{$product->location}}</td>
-                    <td>Me</td>
-                    <td>{{$product->lot_area}}</td>
-                    <td>₱{{$product->price}}</td>
-                    <td>{{$product->description}}</td>
-                    <td>{{$product->category}}</td>
-                    <td>{{$product->property_type}}</td>
-                </tr>
+                <div class="product-box">
+                    <div class="product-image">
+                        <img src="product/{{$product->image}}" alt="{{$product->title}}">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">{{$product->title}}</h3>
+                        <p class="product-location">{{$product->location}}</p>
+                        <p class="product-seller">Seller: Me</p>
+                        <p class="product-lot-area">Lot Area (SQM): {{$product->lot_area}}</p>
+                        <p class="product-price">Price: ₱{{$product->price}}</p>
+                        <p class="product-description">{{$product->description}}</p>
+                        <p class="product-category">Category: {{$product->category}}</p>
+                        <p class="product-property-type">Property Type: {{$product->property_type}}</p>
+                    </div>
+                </div>
                 @endforeach
-            </table>
-            <div class="text-center"><a href="{{ url('gotoinquiries') }}" class="btn btn-primary">Interests</a></div>
-            
+            </div>
         </div>
+        
         
 
          <!-- end slider section -->

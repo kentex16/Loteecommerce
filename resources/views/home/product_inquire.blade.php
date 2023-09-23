@@ -57,15 +57,81 @@ iframe {
 }
 #resize-handle {
     width: 100%;
-    height: 10px; /* Define the height of the draggable handle */
-    background-color: #007BFF; /* Handle background color */
-    cursor: ns-resize; /* Vertical resize cursor */
+    height: 10px; 
+    background-color: #007BFF; 
+    cursor: ns-resize; 
     position: absolute;
     top: 0;
     left: 0;
 }
+.inquiry-container {
+    display: flex;
+    flex-wrap: column;
+    align-items: flex-start
+}
+.inquiry-drawer {
+    width: 400px;
+    width: 100%;    
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.inquiry-title {
+    margin: 0;
+    font-weight: bold;
+    padding: 5px;
+    background-color: #ff0000;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+}
+.inquiry-content {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
 
-    </style>
+.inquiry-form {
+    width: calc(50% - 10px);    
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.inquiry-form label {
+    font-weight: bold;
+}
+
+
+.inquiry-form input[type="text"],
+.inquiry-form input[type="email"],
+.inquiry-form input[type="tel"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.inquiry-form a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+.inquiry-form a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+
+
     </style>
       <!-- Basic -->
       <meta charset="utf-8" />
@@ -114,12 +180,15 @@ iframe {
                            <a class="nav-link" href="{{url('/view_seller')}}">SELL</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="{{url('showInquiries')}}">Inquiries</a>
+                           <a class="nav-link" href="{{url('showInquiries')}}">My Products</a>
                         </li>
                         <ul class="navbar-nav">
-                          <li class="nav-item">
-                              <a class="nav-link" href="{{ url('/') }}">Message</a>
-                          </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('gotoinquiries') }}">Interests</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class ="nav-link"href="{{url('/view_profile')}}">Visit Profile</a>
+                              </li>
                           <li class="nav-item">
                               <form class="access-chatify-form" action="http://127.0.0.1:8000/chatify" method="GET">
                                   <button type="submit" class="nav-link">Chat</button>
@@ -191,52 +260,61 @@ iframe {
          <!-- slider section -->
          
          <div class="col-sm-12">
-            <table class="table table-bordered">
-                <tr>
-                    <th>Product Title</th> 
-                    <th>Inquirer Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Purpose</th>
-                    <th>Budget Range</th>
-                    <th>Land Size Required:</th>
-                    <th>File</th>
-                    
-                </tr>
-                @foreach($inquire as $inquiry)
-                    <tr>
-                        <td>
-                            @if ($inquiry->product_id)
-                                {{ $inquiry->product->title }}
-                            @else
-                                No Product Associated
-                            @endif
-                        </td>
-                        <td>{{ $inquiry->name }}</td>
-                        <td>{{ $inquiry->email }}</td>
-                        <td>{{ $inquiry->phone }}</td>
-                        <td>{{ $inquiry->purpose }}</td>
-                        <td>{{ $inquiry->budget }}</td>
-                        <td>{{ $inquiry->contactmethod }}</td>
-                        <td>
-                            @if ($inquiry->file)
-                                <a href="{{ asset('storage/app/pdfs' . $inquiry->file) }}" download>
-                                    {{ basename($inquiry->file) }}
-                                </a>
-                            @else
-                                No file
-                            @endif
-                        </td>
-                        
-                        
-                       
-                    </tr>
-                @endforeach
-                
-            </table>
+            <div class="heading_container heading_center">
+                <h2>
+                   Product <span> Inquiries </span>
+                </h2>
+             </div>
+            <div class="inquiry-container">
+                @foreach($inquire as $key => $inquiry)
+                <div class="inquiry-drawer">
+                    <h4 class="inquiry-title">Inquiry #{{ $key + 1 }}</h4>
+                    <div class="inquiry-content">
+                        <form>  
+                    <div class="form-group">
+                        <label for="productTitle">Product Title:</label>
+                        <input type="text" class="form-control" id="productTitle" value="{{ $inquiry->product_id ? $inquiry->product->title : 'No Product Associated' }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="inquirerName">Inquirer Name:</label>
+                        <input type="text" class="form-control" id="inquirerName" value="{{ $inquiry->name }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" value="{{ $inquiry->email }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" class="form-control" id="phone" value="{{ $inquiry->phone }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="purpose">Purpose:</label>
+                        <input type="text" class="form-control" id="purpose" value="{{ $inquiry->purpose }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget Range:</label>
+                        <input type="text" class="form-control" id="budget" value="{{ $inquiry->budget }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="landSize">Land Size Required:</label>
+                        <input type="text" class="form-control" id="landSize" value="{{ $inquiry->contactmethod }}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="file">File:</label>
+                        @if ($inquiry->file)
+                            <a href="{{ asset('storage/app/pdfs' . $inquiry->file) }}" download>{{ basename($inquiry->file) }}</a>
+                        @else
+                            No file
+                        @endif
+                    </div>
+                </form>
+            </div>
         </div>
+        @endforeach
+    </div>
+</div>
+
         
-      </div>
       
       @include ('home.footer')
       <!-- footer end -->
@@ -326,6 +404,22 @@ iframe {
               document.getElementById('dialog').style.display = 'none';
           }
       });
+  </script>
+  <script>
+    
+document.addEventListener("DOMContentLoaded", function () {
+    const inquiryDrawers = document.querySelectorAll(".inquiry-drawer");
+
+    inquiryDrawers.forEach((drawer) => {
+        const title = drawer.querySelector(".inquiry-title");
+        const content = drawer.querySelector(".inquiry-content");
+
+        title.addEventListener("click", function () {
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        });
+    });
+});
+
   </script>
    </body>
 </html>

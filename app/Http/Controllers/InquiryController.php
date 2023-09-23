@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Inquire;
 use App\Models\Product;
-use Illuminate\Support\Facades\Auth;// Assuming you have an Inquiry model
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\NewInquiryNotification;// Assuming you have an Inquiry model
 
 class InquiryController extends Controller
 {
@@ -43,6 +44,12 @@ class InquiryController extends Controller
         }
     
         $inquiry->save();
+
+        $product = Product::find($productId);
+        $seller = $product->user; 
+
+        
+        $seller->notify(new NewInquiryNotification());
     
         return redirect()->back()->with('message', 'Successfully Added');
     }
@@ -59,6 +66,19 @@ class InquiryController extends Controller
         return view('home.buyers', compact('products', 'inquire'));
     }
     public function gotoinquiries()
+{
+    
+    $user = Auth::user();
+
+    
+    $products = $user->products;
+
+   
+    $inquire = Inquire::whereIn('product_id', $products->pluck('id'))->get();
+
+    return view('home.product_inquire', compact('inquire'));
+}
+public function notifInquire()
 {
     
     $user = Auth::user();

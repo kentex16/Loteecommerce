@@ -17,7 +17,11 @@ class Product extends Model
     {
         return $this->hasMany(Inquire::class, 'product_id');
     }
-    
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 }
 
 

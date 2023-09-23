@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -61,3 +62,8 @@ route::get('/inquiry_page',[InquiryController ::class,'inquiry_page']);
 Route::post('/add_inquiry', [InquiryController::class, 'add_inquiry'])->name('add_inquiry');
 Route::get('/showInquiries', [InquiryController::class, 'showInquiries'])->name('showInquiries');
 route::get('/gotoinquiries',[InquiryController ::class,'gotoinquiries']);
+Route::get('product_inquire', 'InquiryController@gotoinquiries')->name('product_inquire');
+route::get('/view_profile',[ProfileController ::class,'view_profile']);
+Route::post('/profile/update-photo', 'ProfileController@updateProfilePhoto')->name('update-profile-photo');
+
+

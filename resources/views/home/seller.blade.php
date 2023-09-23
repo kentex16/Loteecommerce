@@ -64,6 +64,39 @@ iframe {
     left: 0;
 }
 
+.dropdown .dropdown-menu {
+        min-width: 250px; /* Adjust the width as needed */
+        max-height: 300px; /* Set a maximum height for the dropdown */
+        overflow-y: auto; /* Enable vertical scrolling if needed */
+    }
+
+    .dropdown .dropdown-menu li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .dropdown .dropdown-menu li:last-child {
+        border-bottom: none; /* Remove the border for the last item */
+    }
+
+    .dropdown .dropdown-menu a {
+        display: block;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .dropdown .dropdown-menu a:hover {
+        background-color: #f5f5f5; /* Change the background color on hover */
+    }
+
+    .dropdown .dropdown-toggle i {
+        font-size: 18px; /* Adjust the icon size as needed */
+    }
+    .navbar-brand img {
+    width: 280px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
     </style>
       <!-- Basic -->
       <meta charset="utf-8" />
@@ -101,23 +134,20 @@ iframe {
                         <a class="nav-link" href="{{ url('gotoseller') }}">Home </a>
                     </li>
                     
-                     <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span class="caret"></span></a>
-                         <ul class="dropdown-menu">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="testimonial.html">Testimonial</a></li>
-                         </ul>
-                      </li>
                       <li class="nav-item">
                          <a class="nav-link" href="{{url('/view_seller')}}">SELL</a>
                       </li>
                       <li class="nav-item">
-                         <a class="nav-link" href="{{url('showInquiries')}}">Inquiries</a>
+                         <a class="nav-link" href="{{url('showInquiries')}}">My Products</a>
                       </li>
                       <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">Message</a>
+                            <a class="nav-link" href="{{ url('gotoinquiries') }}">Interests</a>
                         </li>
+                        <li class="nav-item">
+                            <a class ="nav-link"href="{{url('/view_profile')}}">Visit Profile</a>
+                          </li>
+                          
                         <li class="nav-item">
                             <form class="access-chatify-form" action="http://127.0.0.1:8000/chatify" method="GET">
                                 <button type="submit" class="nav-link">Chat</button>
@@ -177,7 +207,32 @@ iframe {
                             <button id="close-chatify">Close</button>
                         </div>
                     </div>
-                    
+                    @if(Auth::check())
+                    @php
+                        $unreadNotifications = Auth::user()->unreadNotifications;
+                        $unreadCount = $unreadNotifications->count();
+                    @endphp
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            <i class="fa fa-bell"></i>
+                            @if ($unreadCount > 0)
+                                <span class="badge badge-danger">{{ $unreadCount }}</span>
+                            @endif
+                        </a>
+                        <ul class="dropdown-menu">
+                            @foreach ($unreadNotifications as $notification)
+                                <li class="{{ $notification->read_at ? '' : 'unread' }}">
+                                    <!-- Display the notification message and link -->
+                                    <a href="{{ $notification->data['url'] }}">
+                                        {{ $notification->data['message'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endif
+                
                    </ul>
                    
                 </div>
