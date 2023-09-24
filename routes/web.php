@@ -65,5 +65,6 @@ route::get('/gotoinquiries',[InquiryController ::class,'gotoinquiries']);
 Route::get('product_inquire', 'InquiryController@gotoinquiries')->name('product_inquire');
 route::get('/view_profile',[ProfileController ::class,'view_profile']);
 Route::post('/profile/update-photo', 'ProfileController@updateProfilePhoto')->name('update-profile-photo');
+Route::get('/filter_products', [HomeController::class, 'filter_products'])->name('filter.products');
 
 

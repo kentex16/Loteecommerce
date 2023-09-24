@@ -52,13 +52,21 @@
                 <li class="nav-item active">
                    <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
-               <li class="nav-item dropdown">
-                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span class="caret"></span></a>
-                   <ul class="dropdown-menu">
-                      <li><a href="about.html">About</a></li>
-                      <li><a href="testimonial.html">Testimonial</a></li>
-                   </ul>
+                <li class="nav-item dropdown">
+                    @guest
+                     <!-- Display this when the user is logged in --> 
+                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                        <span class="nav-label">Pages <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="testimonial.html">Testimonial</a></li>
+                    </ul>
+                    @else
+                    <a class="nav-link" href="{{ route('login') }}">Soon  </a>
+                    @endguest
                 </li>
+                
                 <li class="nav-item">
                    <a class="nav-link" href="{{url('/view_products')}}">SALES</a>
                 </li>
@@ -78,12 +86,7 @@
                   </li>
               </ul>
               
-                <form class="form-inline">
-                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                  </button>
-               </form>
-
+              
                
 
                @if (Route::has('login'))
@@ -102,7 +105,7 @@
                        </select>
                        <button class="small-button" type="submit">Update Role</button>
                    </form>
-               @else
+               @else  
                    <ul class="navbar-nav ml-auto">
                        <li class="nav-item">
                            <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>

@@ -138,13 +138,7 @@ iframe {
                             <a class="nav-link" href="{{ url('gotoseller') }}">Home </a>
                         </li>
                         
-                       <li class="nav-item dropdown">
-                           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Pages <span class="caret"></span></a>
-                           <ul class="dropdown-menu">
-                              <li><a href="about.html">About</a></li>
-                              <li><a href="testimonial.html">Testimonial</a></li>
-                           </ul>
-                        </li>
+                      
                         <li class="nav-item">
                            <a class="nav-link" href="{{url('/view_seller')}}">Sell</a>
                         </li>
@@ -162,11 +156,7 @@ iframe {
                                   <button type="submit" class="nav-link">Chat</button>
                               </form>
                           </li>
-                        <form class="form-inline">
-                          <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                          <i class="fa fa-search" aria-hidden="true"></i>
-                          </button>
-                       </form>
+                        
         
                        @if (Route::has('login'))
         
@@ -252,9 +242,16 @@ iframe {
              </div>
              
              <div class="div_design">
-                 <label for="">Location:</label>
-                 <input class="text_color" type="text" name="location" placeholder="Write the location" required="">
-             </div>
+                <label for="location">Location:</label>
+                <select class="text_color" name="location" id="location" required>
+                    <option value="" disabled selected>Select a location</option>
+                    @foreach($places as $place)
+                        <option value="{{ $place->location }}">{{ $place->location }}</option>
+                    @endforeach
+                </select>
+            </div>
+            
+            
              
              <div class="div_design">
                  <label for="">Category:</label>

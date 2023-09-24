@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Property;
+use App\Models\Place;
 use App\Notifications\ProductAddedNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Events\ProductAddedEvent;
@@ -17,19 +18,21 @@ class HomeController extends Controller
     public function index()
     {
         $product=Product::paginate(3);
-        return view('home.userpage',compact('product'));
+        $place =  Place::all();
+        return view('home.userpage',compact('product','place'));
     }
 
     public function redirect()
     {
         $user = Auth::user();
         $usertype = $user->usertype;
+        $place =  Place::all();
     
         if ($usertype == '1') {
             return view('admin.home');
         } elseif ($user->role === 'buyer') {
             $product = Product::paginate(3);
-            return view('home.userpage', compact('product'));
+            return view('home.userpage', compact('product','place'));
         } elseif ($user->role === 'seller') {
             return view('home.seller');
         }
@@ -60,7 +63,8 @@ class HomeController extends Controller
     {
         $product=product::all();
         $category=category::all();;
-        return view ('home.view_seller',compact('product','category'));
+        $places = Place::all();
+        return view ('home.view_seller',compact('product','category','places'));
     }
     public function add_product(Request $request)
     {
@@ -128,13 +132,16 @@ public function showUserItems()
 }
 public function view_products ()
 {
-    $product=Product::paginate(6);
-    return view('home.view_products',compact('product'));
+    $product = Product::paginate(6);
+    $place =  Place::all();
+    return view('home.view_products', compact('product','place'));
 }
+
 public function updateUserRole(Request $request)
 {
     $role = $request->input('role'); // 'buyer' or 'seller'
     $user = auth()->user();
+    $place =  Place::all();
 
     // Update the user's role based on the selected role
     if ($role === 'buyer' || $role === 'seller') {
@@ -148,9 +155,10 @@ public function updateUserRole(Request $request)
     // Redirect the user based on their role
     if ($user->role === 'seller') {
         return view('home.seller');
+        
     } else {
         $product = Product::paginate(3);
-        return view('home.userpage', compact('product'));
+        return view('home.userpage', compact('product','place'));
     }
 }
 public function updateOnlineStatus(Request $request)
@@ -170,6 +178,32 @@ public function gotoseller()
     $category=category::all();;
     return view ('home.seller',compact('product','category'));
 }
+public function filter_products(Request $request)
+{
+    $product = Product::query();
+
+    // Check if a location filter is selected
+    if ($request->has('locationFilter')) {
+        $locationFilter = $request->input('locationFilter');
+
+        if (!empty($locationFilter)) {
+            // Filter products by location
+            $product->where('location', $locationFilter);
+        }
+    }
+
+    
+    $allProducts = $product->get();
+
+    // Paginate the filtered products (or all products if no filter is applied)
+    $product = $product->paginate(6);
+
+    // Get all locations for the dropdown
+    $place = Place::all();
+
+    return view('home.view_products', compact('product', 'place', 'allProducts'));
+}
+
 
 }
 

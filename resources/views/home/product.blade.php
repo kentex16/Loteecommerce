@@ -15,6 +15,20 @@
     }
 }
 
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+}
+
+
+.col-sm-6.col-md-4.col-lg-4 {
+    flex: 0 0 calc(33.33% - 20px); 
+    margin: 10px; 
+    min-width: 300px;
+}
+
+
 </style>
 <section class="product_section layout_padding">
     <div class="container">
@@ -22,9 +36,26 @@
           <h2>
              For<span> sale</span>
           </h2>
-       </div>
+           
+          <form action="{{ route('filter.products') }}" method="GET" id="locationFilterForm">
+            <label for="locationFilter">Filter:</label>
+            <select name="locationFilter" id="locationFilter" class="form-control">
+                <option value="">All Locations</option>
+                @foreach($place as $place)
+                    <option value="{{ $place->location }}">{{ $place->location }}</option>
+                @endforeach
+            </select>
+        </form>
+        
+       
+        
+          
+          
+          </select>
+          
        <div class="row">
-
+          <div id="productsContainer"> 
+        <div class="row product-container">
          @foreach($product as $products)
           <div class="col-sm-6 col-md-4 col-lg-4">
              <div class="box">
@@ -58,7 +89,7 @@
                    </h5>
                    
                    <h6 style="color:green;">
-                     {{$products->lot_area}} SQM
+                     {{$products->location}} 
                    </h6>
                    <h6 style="color:red;">
                      ₱{{$products->price}}
@@ -68,13 +99,17 @@
              </div>
           </div>
           @endforeach
+        </div>
+        </div>
           <div id="pagination-container">
             <span style="padding-top:20px;">
                {!! $product->withQueryString()->links('pagination::bootstrap-5')->with(['class' => 'pagination-slide']) !!}
    
             </span>
         </div>
+  
         
+  
          
        
     </div>
@@ -93,5 +128,11 @@
           });
       }
   </script>
-  
+   <script>
+    
+    document.getElementById('locationFilter').addEventListener('change', function () {
+        
+        document.getElementById('locationFilterForm').submit();
+    });
+</script>
  </section>
