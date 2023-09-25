@@ -2,7 +2,7 @@
     <div class="container">
        <div class="heading_container heading_center">
           <h2>
-             Customer's Testimonial
+             Testimonial
           </h2>
        </div>
        <div id="carouselExample3Controls" class="carousel slide" data-ride="carousel">
@@ -18,13 +18,13 @@
                    </div>
                    <div class="detail-box">
                       <h5>
-                         Anna Trevor
+                         Alvin Novero
                       </h5>
                       <h6>
-                         Customer
+                         Owner
                       </h6>
                       <p>
-                         Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                        As the owner of Lote.ph, I'm proud to offer a seamless platform for land transactions. We prioritize the needs of both buyers and sellers, ensuring a smooth and trustworthy experience for all.
                       </p>
                    </div>
                 </div>
@@ -40,13 +40,13 @@
                    </div>
                    <div class="detail-box">
                       <h5>
-                         Anna Trevor
+                         Alvin Novero
                       </h5>
                       <h6>
-                         Customer
+                         Owner
                       </h6>
                       <p>
-                         Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                        I understand the importance of finding the right buyers. With Lote.ph, I've created a space where fellow landowners can connect with potential buyers easily, making land transactions more efficient.
                       </p>
                    </div>
                 </div>
@@ -62,13 +62,13 @@
                    </div>
                    <div class="detail-box">
                       <h5>
-                         Anna Trevor
+                         Alvin Novero 
                       </h5>
                       <h6>
-                         Customer
+                         Owner
                       </h6>
                       <p>
-                         Dignissimos reprehenderit repellendus nobis error quibusdam? Atque animi sint unde quis reprehenderit, et, perspiciatis, debitis totam est deserunt eius officiis ipsum ducimus ad labore modi voluptatibus accusantium sapiente nam! Quaerat.
+                        At Lote.ph, security is our top priority. As the owner, I've implemented cutting-edge features that not only facilitate client connections but also provide comprehensive protection for their data and transactions. Our platform's advanced security measures guarantee the safety and confidence of all users.
                       </p>
                    </div>
                 </div>

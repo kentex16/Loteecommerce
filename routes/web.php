@@ -66,5 +66,6 @@ Route::get('product_inquire', 'InquiryController@gotoinquiries')->name('product_
 route::get('/view_profile',[ProfileController ::class,'view_profile']);
 Route::post('/profile/update-photo', 'ProfileController@updateProfilePhoto')->name('update-profile-photo');
 Route::get('/filter_products', [HomeController::class, 'filter_products'])->name('filter.products');
+Route::post('/subscribe', 'SubscriptionController@subscribe')->name('subscribe');
 
 

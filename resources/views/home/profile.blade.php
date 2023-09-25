@@ -74,15 +74,81 @@
             border-radius: 50%;
             cursor: pointer;
         }
-        #resize-handle {
-            width: 100%;
-            height: 10px; /* Define the height of the draggable handle */
-            background-color: #007BFF; /* Handle background color */
-            cursor: ns-resize; /* Vertical resize cursor */
-            position: absolute;
-            top: 0;
-            left: 0;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
         }
+
+        .profile-container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .profile-header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .profile-photo {
+            border-radius: 50%;
+            max-width: 150px;
+            margin: 20px auto;
+        }
+
+        .profile-details {
+            margin-top: 20px;
+        }
+
+        .profile-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile-details li {
+            margin-bottom: 10px;
+        }
+
+        .upload-section {
+            text-align: center;
+        }
+
+        .upload-button {
+            display: none;
+        }
+
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #0056b3;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .profile-container {
+                margin: 10px;
+                border-radius: 0;
+            }
+        }
+
       </style>
       <!-- Basic -->
       <meta charset="utf-8" />
@@ -227,44 +293,34 @@
          <!-- slider section -->
          
         
-         <div class="container">
-             <div class="row justify-content-center">
-                 <div class="col-md-8">
-                     <div class="card">
-                         <div class="card-header bg-primary text-white">My Profile</div>
-         
-                         <div class="card-body">
-                             <div class="text-center">
-                                 <form action="{{ route('update-profile-photo') }}" method="POST" enctype="multipart/form-data">
-                                     @csrf
-                                     <div class="form-group">
-                                         <label for="profile_photo">Upload Profile Photo</label>
-                                         <input type="file" class="form-control-file" id="profile_photo" name="profile_photo">
-                                     </div>
-                                     <button type="submit" class="btn btn-primary">Upload Photo</button>
-                                 </form>
-                                 
-                                 
-                                 <div class="text-center">
-                                     <img src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" class="rounded-circle" width="150">
-                                     <h2 class="mt-3">{{ $user->name }}</h2>
-                                     <p class="text-muted">{{ $user->email }}</p>
-                                 </div>
-                                 
-                             <hr>
-         
-                             <h3>Profile Information</h3>
-                             <ul class="list-group">
-                                 <li class="list-group-item">Email: {{ $user->email }}</li>
-                                 <li class="list-group-item">Phone: {{ $user->phone }}</li>
-                                 <li class="list-group-item">Address: {{ $user->address }}</li>
-                                 <li class="list-group-item">Role: {{ $user->role }}</li>
-                             </ul>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
+         <div class="profile-container">
+            <div class="profile-header">
+                <h2>My Profile</h2>
+            </div>
+            <div class="profile-details text-center">
+                <img src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" class="rounded-circle profile-photo">
+                <h2 class="mt-3">{{ $user->name }}</h2>
+                <p class="text-muted">{{ $user->email }}</p>
+            </div>
+            <hr>
+            <div class="profile-details">
+                <h3>Profile Information</h3>
+                <ul>
+                    <li>Email: {{ $user->email }}</li>
+                    <li>Phone: {{ $user->phone }}</li>
+                    <li>Address: {{ $user->address }}</li>
+                    <li>Role: {{ $user->role }}</li>
+                </ul>
+            </div>
+            <div class="upload-section">
+                <form action="{{ route('update-profile-photo') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <label for="profile_photo" class="custom-file-upload">Upload Profile Photo</label>
+                    <input type="file" class="upload-button" id="profile_photo" name="profile_photo">
+                    <button type="submit" class="btn btn-primary mt-3">Upload Photo</button>
+                </form>
+            </div>
+        </div>
          
          <!-- end slider section -->
       </div>
@@ -309,60 +365,41 @@
             pageContainer.classList.add('active');
          });
       </script>
-      <script>
-         const chatifyPopup = document.getElementById('chatify-popup');
-      const toggleChatifyButton = document.getElementById('toggle-chatify');
-      const chatifyIframeContainer = document.getElementById('chatify-iframe-container');
-      const closeChatifyButton = document.getElementById('close-chatify');
-      const resizeHandle = document.getElementById('resize-handle');
-      
-      toggleChatifyButton.addEventListener('click', () => {
-          toggleChatify();
-      });
-      
-      closeChatifyButton.addEventListener('click', () => {
-          toggleChatify();
-      });
-      
-      function toggleChatify() {
-          if (chatifyIframeContainer.style.display === 'block') {
-              chatifyIframeContainer.style.display = 'none';
-          } else {
-              chatifyIframeContainer.style.display = 'block';
-          }
-      }
-      
-      let isResizing = false;
-      const maxPopupHeight = 500; // Adjust this value as needed
-      
-      resizeHandle.addEventListener('mousedown', (e) => {
-          isResizing = true;
-          const startY = e.clientY;
-          const startHeight = chatifyIframeContainer.clientHeight;
-      
-          document.addEventListener('mousemove', resize);
-          document.addEventListener('mouseup', stopResize);
-      
-          function resize(e) {
-              if (!isResizing) return;
-              const deltaY = e.clientY - startY;
-              let newHeight = startHeight + deltaY;
-      
-              // Limit the height to the maximum allowed height
-              if (newHeight > maxPopupHeight) {
-                  newHeight = maxPopupHeight;
-              }
-      
-              chatifyIframeContainer.style.height = newHeight + 'px';
-          }
-      
-          function stopResize() {
-              isResizing = false;
-              document.removeEventListener('mousemove', resize);
-              document.removeEventListener('mouseup', stopResize);
-          }
-      });
-      
-         </script>
+     <script>
+        window.addEventListener('load', function () {
+            // Get the page container element
+            const pageContainer = document.querySelector('.page-transition');
+    
+            // Add the 'active' class to trigger the transition
+            pageContainer.classList.add('active');
+        });
+    </script>
+<script>
+    const chatifyPopup = document.getElementById('chatify-popup');
+const toggleChatifyButton = document.getElementById('toggle-chatify');
+const chatifyIframeContainer = document.getElementById('chatify-iframe-container');
+const closeChatifyButton = document.getElementById('close-chatify');
+const resizeHandle = document.getElementById('resize-handle');
+
+toggleChatifyButton.addEventListener('click', () => {
+    toggleChatify();
+});
+
+closeChatifyButton.addEventListener('click', () => {
+    toggleChatify();
+});
+
+function toggleChatify() {
+    if (chatifyIframeContainer.style.display === 'block') {
+        chatifyIframeContainer.style.display = 'none';
+    } else {
+        chatifyIframeContainer.style.display = 'block';
+        chatifyIframeContainer.style.height = maxPopupHeight + 'px'; // Set maximum height when opening
+    }
+}
+
+const maxPopupHeight = 2000; // Adjust this value as needed
+
+</script>
    </body>
 </html>

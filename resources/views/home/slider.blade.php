@@ -1,7 +1,6 @@
 <section class="slider_section ">
    
-    <div class="slider_bg_box">
-       <img src="images/slider-bg.jpg" alt="">
+   <div class="slider_bg_box" style="background-color: #ccc;">
     </div>
     <div id="customCarousel1" class="carousel slide" data-ride="carousel">
        <div class="carousel-inner">
@@ -12,16 +11,15 @@
                       <div class="detail-box">
                          <h1>
                             <span>
-                            Sale 20% Off
+                            LAND YOUR DREAM
                             </span>
                             <br>
-                            On Everything
+                            on Lote.ph
                          </h1>
                          <p>
-                            Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
-                         </p>
+                           Lote.ph Ecommerce simplifies the complex process of land transactions. Whether you're buying, selling, or looking to invest in real estate, our platform streamlines the journey, making it easier and more accessible for both buyers and sellers. Say goodbye to the hassle of traditional land deals and embrace a digital solution that saves you time and effort.
                          <div class="btn-box">
-                            <a href="" class="btn1">
+                            <a href="{{url('view_products')}}" class="btn1">
                             Shop Now
                             </a>
                          </div>
@@ -37,16 +35,16 @@
                       <div class="detail-box">
                          <h1>
                             <span>
-                            Sale 20% Off
+                           PLOT YOUR FUTURE
                             </span>
                             <br>
-                            On Everything
+                            on Lote.ph
                          </h1>
                          <p>
-                            Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                           With Lote.ph Ecommerce, security is our priority. We provide a trusted environment where landowners can confidently list their properties, and buyers can explore a wide range of options. Our platform incorporates chat gateways to provide communication between the buyer and seller.
                          </p>
                          <div class="btn-box">
-                            <a href="" class="btn1">
+                            <a href="{{url('view_products')}}" class="btn1">
                             Shop Now
                             </a>
                          </div>
@@ -62,16 +60,16 @@
                       <div class="detail-box">
                          <h1>
                             <span>
-                            Sale 20% Off
+                           FIND LAND ONLINE
                             </span>
                             <br>
-                            On Everything
+                            on Lote.ph
                          </h1>
                          <p>
-                            Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                           Whether you're a seasoned real estate professional or a first-time land buyer, Lote.ph Ecommerce welcomes all. Our user-friendly interface and comprehensive listings cater to diverse needs and preferences. Find your ideal piece of land or sell your property effortlessly, all within a dynamic online marketplace designed to meet the demands of the modern real estate landscape.
                          </p>
                          <div class="btn-box">
-                            <a href="" class="btn1">
+                            <a href="{{url('view_products')}}" class="btn1">
                             Shop Now
                             </a>
                          </div>

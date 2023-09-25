@@ -1,3 +1,4 @@
+<!--
 <section class="subscribe_section">
     <div class="container-fuild">
        <div class="box">
@@ -8,10 +9,15 @@
                       <h3>Subscribe To Get Discount Offers</h3>
                    </div>
                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-                   <form action="">
-                      <input type="email" placeholder="Enter your email">
+                   @if(session('success'))
+                     <div class="alert alert-success">
+                        {{ session('success') }}
+                     </div>
+                  @endif
+                   <form action="{{ route('subscribe') }}" method="POST">
+                      <input type="email" name ="email" placeholder="Enter your email">
                       <button>
-                      subscribe
+                      Subscribe
                       </button>
                    </form>
                 </div>
@@ -20,3 +26,4 @@
        </div>
     </div>
  </section>
+ -->

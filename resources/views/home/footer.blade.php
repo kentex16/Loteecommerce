@@ -7,9 +7,10 @@
                         <a href="#"><img width="210" src="images/logo.png" alt="#" /></a>
                       </div>
                       <div class="information_f">
-                        <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
-                        <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
-                        <p><strong>EMAIL:</strong> yourmain@gmail.com</p>
+                        Updated at: <span id="displayYear"></span>
+                        <p><strong>ADDRESS:</strong> Tagaytay City, Cavite </p>
+                        <p><strong>TELEPHONE:</strong> +639298527829</p>
+                        <p><strong>EMAIL:</strong> kenneth.novero@cvsu.edu.ph</p>
                       </div>
                    </div>
                </div>
@@ -21,12 +22,11 @@
                      <div class="widget_menu">
                         <h3>Menu</h3>
                         <ul>
-                           <li><a href="#">Home</a></li>
-                           <li><a href="#">About</a></li>
-                           <li><a href="#">Services</a></li>
-                           <li><a href="#">Testimonial</a></li>
-                           <li><a href="#">Blog</a></li>
-                           <li><a href="#">Contact</a></li>
+                           <li><a href="#home">Home</a></li>
+                           <li><a href="#slider">About</a></li>
+                           <li><a href="#why">Services</a></li>
+                           <li><a href="#product">Products</a></li>
+                           
                         </ul>
                      </div>
                   </div>
@@ -34,12 +34,10 @@
                      <div class="widget_menu">
                         <h3>Account</h3>
                         <ul>
-                           <li><a href="#">Account</a></li>
-                           <li><a href="#">Checkout</a></li>
-                           <li><a href="#">Login</a></li>
-                           <li><a href="#">Register</a></li>
-                           <li><a href="#">Shopping</a></li>
-                           <li><a href="#">Widget</a></li>
+                           <li><a href="{{ url('/view_profile') }}">Profile</a></li>
+                           <li><a href="{{ url('/inquiry_page') }}">Inquire</a></li>
+                           <li><a href="{{ url('/view_products') }}">Shopping</a></li>
+                           
                         </ul>
                      </div>
                   </div>
@@ -67,4 +65,5 @@
                </div>
             </div>
          </div>
+
       </footer>

@@ -17,7 +17,7 @@
     0% {
         transform: translateY(0);
         opacity: 0;
-    }
+    }   
     50% {
         transform: translateY(-20px); /* Adjust the float height as needed */
         opacity: 0.7;
@@ -53,8 +53,11 @@
             max-height: 400px; /* Set a larger maximum height for the popup */
             overflow: hidden;
             position: relative;
+            height: 100px;
         }
-
+        #chatify-iframe-container.large {
+            height: 400px; 
+        }
 
         iframe {
             width: 100%;
@@ -101,6 +104,7 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+      
    </head>
    <body>
      
@@ -108,47 +112,47 @@
       <div class="hero_area">
          
          <!-- header section strats -->
-         
+         <section id="home">
         @include('home.header')
-        
+         </section>
          <!-- end header section -->
          <!-- slider section -->
-         
+         <section id="slider">
          @include ('home.slider')
+        
          <!-- end slider section -->
       </div>
-  
+    </section>
       <!-- why section -->
+      <section id="why">
       @include('home.why')
-      
+      </section>
       
       <!-- end why section -->
       
       <!-- arrival section -->
+      <section id="inquiries">
       @include('home.arrival')
       <!-- end arrival section -->
-      
+      </section>
       <!-- product section -->
+      <section id="product">
       @include('home.product')
+      </section>
       <!-- end product section -->
 
       <!-- subscribe section -->
       @include ('home.subscribe')
       <!-- end subscribe section -->
       <!-- client section -->
+      <section id="testimonial">
       @include ('home.client')
+      </section>
       <!-- end client section -->
       <!-- footer start -->
       @include ('home.footer')
       <!-- footer end -->
-      <div class="cpy_">
-         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
-         
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-         
-         </p>
-   
-      </div>
+     
    </div>
 </div>
    <div id="chatify-popup">
@@ -169,69 +173,62 @@
       <script src="home/js/bootstrap.js"></script>
       <!-- custom js -->
       <script src="home/js/custom.js"></script>
-      <script>
-         window.addEventListener('load', function () {
-            // Get the page container element
-            const pageContainer = document.querySelector('.page-transition');
-      
-            // Add the 'active' class to trigger the transition
-            pageContainer.classList.add('active');
-         });
-      </script>
-      <script>
-         const chatifyPopup = document.getElementById('chatify-popup');
-      const toggleChatifyButton = document.getElementById('toggle-chatify');
-      const chatifyIframeContainer = document.getElementById('chatify-iframe-container');
-      const closeChatifyButton = document.getElementById('close-chatify');
-      const resizeHandle = document.getElementById('resize-handle');
-      
-      toggleChatifyButton.addEventListener('click', () => {
-          toggleChatify();
-      });
-      
-      closeChatifyButton.addEventListener('click', () => {
-          toggleChatify();
-      });
-      
-      function toggleChatify() {
-          if (chatifyIframeContainer.style.display === 'block') {
-              chatifyIframeContainer.style.display = 'none';
-          } else {
-              chatifyIframeContainer.style.display = 'block';
-          }
-      }
-      
-      let isResizing = false;
-      const maxPopupHeight = 500; // Adjust this value as needed
-      
-      resizeHandle.addEventListener('mousedown', (e) => {
-          isResizing = true;
-          const startY = e.clientY;
-          const startHeight = chatifyIframeContainer.clientHeight;
-      
-          document.addEventListener('mousemove', resize);
-          document.addEventListener('mouseup', stopResize);
-      
-          function resize(e) {
-              if (!isResizing) return;
-              const deltaY = e.clientY - startY;
-              let newHeight = startHeight + deltaY;
-      
-              // Limit the height to the maximum allowed height
-              if (newHeight > maxPopupHeight) {
-                  newHeight = maxPopupHeight;
-              }
-      
-              chatifyIframeContainer.style.height = newHeight + 'px';
-          }
-      
-          function stopResize() {
-              isResizing = false;
-              document.removeEventListener('mousemove', resize);
-              document.removeEventListener('mouseup', stopResize);
-          }
-      });
-      
+            <script>
+                window.addEventListener('load', function () {
+                    // Get the page container element
+                    const pageContainer = document.querySelector('.page-transition');
+            
+                    // Add the 'active' class to trigger the transition
+                    pageContainer.classList.add('active');
+                });
+            </script>
+        <script>
+            const chatifyPopup = document.getElementById('chatify-popup');
+        const toggleChatifyButton = document.getElementById('toggle-chatify');
+        const chatifyIframeContainer = document.getElementById('chatify-iframe-container');
+        const closeChatifyButton = document.getElementById('close-chatify');
+        const resizeHandle = document.getElementById('resize-handle');
+
+        toggleChatifyButton.addEventListener('click', () => {
+            toggleChatify();
+        });
+
+        closeChatifyButton.addEventListener('click', () => {
+            toggleChatify();
+        });
+
+        function toggleChatify() {
+            if (chatifyIframeContainer.style.display === 'block') {
+                chatifyIframeContainer.style.display = 'none';
+            } else {
+                chatifyIframeContainer.style.display = 'block';
+                chatifyIframeContainer.style.height = maxPopupHeight + 'px'; // Set maximum height when opening
+            }
+        }
+
+        const maxPopupHeight = 2000; // Adjust this value as needed
+
+        </script>
+         <script>
+            document.addEventListener('DOMContentLoaded', function () {
+               const scrollToTopLinks = document.querySelectorAll('a[href^="#"]');
+               
+               for (const link of scrollToTopLinks) {
+                  link.addEventListener('click', function (e) {
+                     e.preventDefault();
+                     const targetId = this.getAttribute('href').substring(1); // Remove the '#' character
+                     const targetElement = document.getElementById(targetId);
+                     
+                     if (targetElement) {
+                        window.scrollTo({
+                           top: targetElement.offsetTop,
+                           behavior: 'smooth', // Use smooth scrolling
+                        });
+                     }
+                  });
+               }
+            });
          </script>
+         
    </body>
 </html>

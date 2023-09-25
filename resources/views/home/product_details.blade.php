@@ -1,6 +1,56 @@
 <!DOCTYPE html>
 <html>
    <head>
+      <style>
+           #chatify-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    border-radius: 5px;
+        }
+
+        #toggle-chatify {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            width: 100%;
+        }
+        #chatify-iframe-container {
+            display: none; /* Initially hide the chat content */
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            max-height: 400px; /* Set a larger maximum height for the popup */
+            overflow: hidden;
+            position: relative;
+            height: 100px;
+        }
+        #chatify-iframe-container.large {
+            height: 400px; 
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        #close-chatify {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #ccc;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+      </style>
       <!-- Basic -->
       <base href="/public">
       <meta charset="utf-8" />
@@ -84,12 +134,15 @@
 
       @include ('home.footer')
       
-      <div class="cpy_">
-         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
+      <div id="chatify-popup">
+         <div id="resize-handle"></div>
+         <button id="toggle-chatify">Open Chat</button>
          
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-         
-         </p>
+         <div id="chatify-iframe-container">
+             <iframe src="http://127.0.0.1:8000/chatify"></iframe>
+             <button id="close-chatify">Close</button>
+             
+         </div>
       </div>
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
@@ -99,5 +152,41 @@
       <script src="home/js/bootstrap.js"></script>
       <!-- custom js -->
       <script src="home/js/custom.js"></script>
+      <script>
+         window.addEventListener('load', function () {
+             // Get the page container element
+             const pageContainer = document.querySelector('.page-transition');
+     
+             // Add the 'active' class to trigger the transition
+             pageContainer.classList.add('active');
+         });
+     </script>
+ <script>
+     const chatifyPopup = document.getElementById('chatify-popup');
+ const toggleChatifyButton = document.getElementById('toggle-chatify');
+ const chatifyIframeContainer = document.getElementById('chatify-iframe-container');
+ const closeChatifyButton = document.getElementById('close-chatify');
+ const resizeHandle = document.getElementById('resize-handle');
+
+ toggleChatifyButton.addEventListener('click', () => {
+     toggleChatify();
+ });
+
+ closeChatifyButton.addEventListener('click', () => {
+     toggleChatify();
+ });
+
+ function toggleChatify() {
+     if (chatifyIframeContainer.style.display === 'block') {
+         chatifyIframeContainer.style.display = 'none';
+     } else {
+         chatifyIframeContainer.style.display = 'block';
+         chatifyIframeContainer.style.height = maxPopupHeight + 'px'; // Set maximum height when opening
+     }
+ }
+
+ const maxPopupHeight = 2000; // Adjust this value as needed
+
+ </script>
    </body>
 </html>

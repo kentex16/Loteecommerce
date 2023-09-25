@@ -329,60 +329,41 @@ iframe {
       
       <!-- Include your custom JavaScript here -->
       <script>
-         const chatifyPopup = document.getElementById('chatify-popup');
-      const toggleChatifyButton = document.getElementById('toggle-chatify');
-      const chatifyIframeContainer = document.getElementById('chatify-iframe-container');
-      const closeChatifyButton = document.getElementById('close-chatify');
-      const resizeHandle = document.getElementById('resize-handle');
-      
-      toggleChatifyButton.addEventListener('click', () => {
-          toggleChatify();
-      });
-      
-      closeChatifyButton.addEventListener('click', () => {
-          toggleChatify();
-      });
-      
-      function toggleChatify() {
-          if (chatifyIframeContainer.style.display === 'block') {
-              chatifyIframeContainer.style.display = 'none';
-          } else {
-              chatifyIframeContainer.style.display = 'block';
-          }
-      }
-      
-      let isResizing = false;
-      const maxPopupHeight = 500; // Adjust this value as needed
-      
-      resizeHandle.addEventListener('mousedown', (e) => {
-          isResizing = true;
-          const startY = e.clientY;
-          const startHeight = chatifyIframeContainer.clientHeight;
-      
-          document.addEventListener('mousemove', resize);
-          document.addEventListener('mouseup', stopResize);
-      
-          function resize(e) {
-              if (!isResizing) return;
-              const deltaY = e.clientY - startY;
-              let newHeight = startHeight + deltaY;
-      
-              // Limit the height to the maximum allowed height
-              if (newHeight > maxPopupHeight) {
-                  newHeight = maxPopupHeight;
-              }
-      
-              chatifyIframeContainer.style.height = newHeight + 'px';
-          }
-      
-          function stopResize() {
-              isResizing = false;
-              document.removeEventListener('mousemove', resize);
-              document.removeEventListener('mouseup', stopResize);
-          }
-      });
-      
-         </script>
+        window.addEventListener('load', function () {
+            // Get the page container element
+            const pageContainer = document.querySelector('.page-transition');
+    
+            // Add the 'active' class to trigger the transition
+            pageContainer.classList.add('active');
+        });
+    </script>
+<script>
+    const chatifyPopup = document.getElementById('chatify-popup');
+const toggleChatifyButton = document.getElementById('toggle-chatify');
+const chatifyIframeContainer = document.getElementById('chatify-iframe-container');
+const closeChatifyButton = document.getElementById('close-chatify');
+const resizeHandle = document.getElementById('resize-handle');
+
+toggleChatifyButton.addEventListener('click', () => {
+    toggleChatify();
+});
+
+closeChatifyButton.addEventListener('click', () => {
+    toggleChatify();
+});
+
+function toggleChatify() {
+    if (chatifyIframeContainer.style.display === 'block') {
+        chatifyIframeContainer.style.display = 'none';
+    } else {
+        chatifyIframeContainer.style.display = 'block';
+        chatifyIframeContainer.style.height = maxPopupHeight + 'px'; // Set maximum height when opening
+    }
+}
+
+const maxPopupHeight = 2000; // Adjust this value as needed
+
+</script>
   <script>
       // Add an event listener to the role select element
       document.getElementById('role').addEventListener('change', function() {
