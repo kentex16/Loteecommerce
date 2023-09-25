@@ -208,7 +208,11 @@
       
     
       @include ('home.footer')
+      
       <!-- footer end -->
+      <div class="cpy_">
+        
+      </div>
       <div id="chatify-popup">
         <div id="resize-handle"></div>
         <button id="toggle-chatify">Open Chat</button>

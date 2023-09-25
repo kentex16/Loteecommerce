@@ -45,19 +45,20 @@
                   </div>     
                   <div class="col-md-5">
                      <div class="widget_menu">
-                        <h3>Newsletter</h3>
+                        <h3>SUBSCRIBE</h3>
                         <div class="information_f">
-                          <p>Subscribe by our newsletter and get update protidin.</p>
+                          <p>Subscribe by our website to determine the quantity of viewers.</p>
                         </div>
                         <div class="form_sub">
-                           <form>
+                           <form action="{{ route('subscribe') }}" method="POST">
+                              @csrf
                               <fieldset>
                                  <div class="field">
-                                    <input type="email" placeholder="Enter Your Mail" name="email" />
+                                    <input type="email" placeholder="Enter Your Email" name="email" />
                                     <input type="submit" value="Subscribe" />
                                  </div>
                               </fieldset>
-                           </form>
+                           </form>                           
                         </div>
                      </div>
                   </div>

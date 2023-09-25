@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -312,16 +313,17 @@
                     <li>Role: {{ $user->role }}</li>
                 </ul>
             </div>
-            <div class="upload-section">
-                <form action="{{ route('update-profile-photo') }}" method="POST" enctype="multipart/form-data">
+          
+                
+
+                        <div class="upload-section">
+                <form action="{{ route('upload-profile-photo') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <label for="profile_photo" class="custom-file-upload">Upload Profile Photo</label>
                     <input type="file" class="upload-button" id="profile_photo" name="profile_photo">
                     <button type="submit" class="btn btn-primary mt-3">Upload Photo</button>
                 </form>
             </div>
-        </div>
-         
          <!-- end slider section -->
       </div>
   
@@ -329,11 +331,7 @@
       @include ('home.footer')
       <!-- footer end -->
       <div class="cpy_">
-         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
-         
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-         
-         </p>
+        
    
       </div>    
    </div>

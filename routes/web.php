@@ -13,6 +13,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\MessageController;
 use App\Models\User;
 Use App\Http\Controllers\InquiryController;
+Use App\Http\Controllers\SubscriptionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -64,8 +65,8 @@ Route::get('/showInquiries', [InquiryController::class, 'showInquiries'])->name(
 route::get('/gotoinquiries',[InquiryController ::class,'gotoinquiries']);
 Route::get('product_inquire', 'InquiryController@gotoinquiries')->name('product_inquire');
 route::get('/view_profile',[ProfileController ::class,'view_profile']);
-Route::post('/profile/update-photo', 'ProfileController@updateProfilePhoto')->name('update-profile-photo');
 Route::get('/filter_products', [HomeController::class, 'filter_products'])->name('filter.products');
 Route::post('/subscribe', 'SubscriptionController@subscribe')->name('subscribe');
-
-
+Route::get('/profile', [ProfileController::class, 'showProfile'])->name('show-profile');
+Route::post('/profile/upload-photo', [ProfileController::class, 'uploadProfilePhoto'])->name('upload-profile-photo');
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');

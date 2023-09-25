@@ -1,4 +1,4 @@
-<section class="slider_section ">
+<section class="slider_section " style="display: flex; justify-content: center; align-items: center; height: 100vh;">
    
    <div class="slider_bg_box" style="background-color: #ccc;">
     </div>
