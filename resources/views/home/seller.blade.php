@@ -2,6 +2,17 @@
 <html>
    <head>
     <style>
+        .page-transition {
+         transform: translateX(-100%);
+         opacity: 0;
+         transition: transform 0.5s ease, opacity 0.5s ease; /* Increased duration to 1 second */
+      }
+
+      /* Final state of the page (visible) */
+      .page-transition.active {
+         transform: translateX(0);
+         opacity: 1;
+      }
         .small-button{
             font-size: 10px;
         }
@@ -119,6 +130,7 @@ iframe {
       <link href="home/css/responsive.css" rel="stylesheet" />
    </head>
    <body>
+    <div class="page-transition">
       <div class="hero_area">
          <!-- header section strats -->
       <header class="header_section">
@@ -195,14 +207,7 @@ iframe {
                      </li>
                      @endauth
                       @endif
-                      <div id="chatify-popup">
-                        <div id="resize-handle"></div>
-                        <button id="toggle-chatify">Open Chat</button>
-                        <div id="chatify-iframe-container">
-                            <iframe src="http://127.0.0.1:8000/chatify"></iframe>
-                            <button id="close-chatify">Close</button>
-                        </div>
-                    </div>
+                    
                     @if(Auth::check())
                     @php
                         $unreadNotifications = Auth::user()->unreadNotifications;
@@ -267,6 +272,15 @@ iframe {
          
          </p>
       </div>
+    </div>
+    <div id="chatify-popup">
+        <div id="resize-handle"></div>
+        <button id="toggle-chatify">Open Chat</button>
+        <div id="chatify-iframe-container">
+            <iframe src="http://127.0.0.1:8000/chatify"></iframe>
+            <button id="close-chatify">Close</button>
+        </div>
+    </div>
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

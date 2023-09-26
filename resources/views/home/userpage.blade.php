@@ -2,17 +2,21 @@
 <html>
    <head>
       <style>
-           .page-transition {
-         transform: translateX(-100%);
-         opacity: 0;
-         transition: transform 0.5s ease, opacity 0.5s ease; /* Increased duration to 1 second */
-      }
+          .page-transition {
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
 
-      /* Final state of the page (visible) */
-      .page-transition.active {
-         transform: translateX(0);
-         opacity: 1;
-      }
+        /* Hide the page initially */
+        .page-transition {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        /* Show the page when the 'active' class is added */
+        .page-transition.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
       @keyframes floatAnimation {
     0% {
         transform: translateY(0);
@@ -152,7 +156,11 @@
       <!-- footer start -->
       @include ('home.footer')
       <!-- footer end -->
-     
+      <div class="cpy_">
+        
+         
+      </p>
+   </div>
    </div>
 </div>
    <div id="chatify-popup">
@@ -229,6 +237,11 @@
                }
             });
          </script>
-         
+         <script>
+            // Use JavaScript to add the 'active' class to trigger the transition
+            $(document).ready(function () {
+                $('.page-transition').addClass('active');
+            });
+        </script>
    </body>
 </html>

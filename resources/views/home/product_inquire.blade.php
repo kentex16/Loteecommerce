@@ -2,7 +2,7 @@
 <html>
    <head>
     <style>
-        <style>
+        
         .small-button{
             font-size: 10px;
         }
@@ -130,6 +130,49 @@ iframe {
     color: #0056b3;
 }
 
+.page-transition {
+         transform: translateX(-100%);
+         opacity: 0;
+         transition: transform 0.5s ease, opacity 0.5s ease; /* Increased duration to 1 second */
+      }
+
+      /* Final state of the page (visible) */
+      .page-transition.active {
+         transform: translateX(0);
+         opacity: 1;
+      }
+      .dropdown .dropdown-menu {
+        min-width: 250px; /* Adjust the width as needed */
+        max-height: 300px; /* Set a maximum height for the dropdown */
+        overflow-y: auto; /* Enable vertical scrolling if needed */
+    }
+
+    .dropdown .dropdown-menu li {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .dropdown .dropdown-menu li:last-child {
+        border-bottom: none; /* Remove the border for the last item */
+    }
+
+    .dropdown .dropdown-menu a {
+        display: block;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .dropdown .dropdown-menu a:hover {
+        background-color: #f5f5f5; /* Change the background color on hover */
+    }
+
+    .dropdown .dropdown-toggle i {
+        font-size: 18px; /* Adjust the icon size as needed */
+    }
+    .navbar-brand img {
+    width: 280px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
 
 
     </style>
@@ -154,6 +197,7 @@ iframe {
       <link href="home/css/responsive.css" rel="stylesheet" />
    </head>
    <body>
+    <div class="page-transition">
       <div class="hero_area">
          <!-- header section strats -->
          <header class="header_section">
@@ -230,15 +274,32 @@ iframe {
                        </li>
                        @endauth
                         @endif
-                        <div id="chatify-popup">
-                          <div id="resize-handle"></div>
-                          <button id="toggle-chatify">Open Chat</button>
-                          <div id="chatify-iframe-container">
-                              <iframe src="http://127.0.0.1:8000/chatify"></iframe>
-                              <button id="close-chatify">Close</button>
-                          </div>
-                      </div>
-                      
+                        @if(Auth::check())
+                        @php
+                            $unreadNotifications = Auth::user()->unreadNotifications;
+                            $unreadCount = $unreadNotifications->count();
+                        @endphp
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <i class="fa fa-bell"></i>
+                                @if ($unreadCount > 0)
+                                    <span class="badge badge-danger">{{ $unreadCount }}</span>
+                                @endif
+                            </a>
+                            <ul class="dropdown-menu">
+                                @foreach ($unreadNotifications as $notification)
+                                    <li class="{{ $notification->read_at ? '' : 'unread' }}">
+                                        <!-- Display the notification message and link -->
+                                        <a href="{{ $notification->data['url'] }}">
+                                            {{ $notification->data['message'] }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endif
+
                      </ul>
                      
                   </div>
@@ -311,6 +372,16 @@ iframe {
       <div class="cpy_">
         
       </div>
+    </div>
+    <div id="chatify-popup">
+        <div id="resize-handle"></div>
+        <button id="toggle-chatify">Open Chat</button>
+        <div id="chatify-iframe-container">
+            <iframe src="http://127.0.0.1:8000/chatify"></iframe>
+            <button id="close-chatify">Close</button>
+        </div>
+    </div>
+  </div>
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

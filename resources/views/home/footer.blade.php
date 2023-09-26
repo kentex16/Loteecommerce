@@ -34,11 +34,13 @@
                      <div class="widget_menu">
                         <h3>Account</h3>
                         <ul>
+                           @auth
                            <li><a href="{{ url('/view_profile') }}">Profile</a></li>
                            <li><a href="{{ url('/inquiry_page') }}">Inquire</a></li>
                            <li><a href="{{ url('/view_products') }}">Shopping</a></li>
-                           
-                        </ul>
+                           @endauth
+                       </ul>
+                       
                      </div>
                   </div>
                      </div>

@@ -2,7 +2,21 @@
 <html>
    <head>
       <style>
-        
+        .page-transition {
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        /* Hide the page initially */
+        .page-transition {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        /* Show the page when the 'active' class is added */
+        .page-transition.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
          .small-button{
              font-size: 10px;
          }
@@ -116,6 +130,7 @@
       <link href="home/css/responsive.css" rel="stylesheet" />
    </head>
    <body>
+    <div class="page-transition">
       <div class="hero_area">
          <!-- header section strats -->
         @include('home.header')
@@ -213,6 +228,7 @@
       <div class="cpy_">
         
       </div>
+    </div>
       <div id="chatify-popup">
         <div id="resize-handle"></div>
         <button id="toggle-chatify">Open Chat</button>
@@ -275,5 +291,11 @@
           }
       });
   </script>
+  <script>
+    // Use JavaScript to add the 'active' class to trigger the transition
+    $(document).ready(function () {
+        $('.page-transition').addClass('active');
+    });
+</script>
    </body>
 </html>

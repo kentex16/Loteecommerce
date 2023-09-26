@@ -2,6 +2,17 @@
 <html>
    <head>
       <style>
+        .page-transition {
+         transform: translateX(-100%);
+         opacity: 0;
+         transition: transform 0.5s ease, opacity 0.5s ease; /* Increased duration to 1 second */
+      }
+
+      /* Final state of the page (visible) */
+      .page-transition.active {
+         transform: translateX(0);
+         opacity: 1;
+      }
            #chatify-popup {
     position: fixed;
     bottom: 20px;
@@ -73,6 +84,7 @@
       <link href="home/css/responsive.css" rel="stylesheet" />
    </head>
    <body>
+    <div class="page-transition">
       <div class="hero_area">
          
         @include('home.header')
@@ -137,6 +149,7 @@
       <div class="cpy_">
         
       </div>
+    </div>
       <div id="chatify-popup">
          <div id="resize-handle"></div>
          <button id="toggle-chatify">Open Chat</button>
