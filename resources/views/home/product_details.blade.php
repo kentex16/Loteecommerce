@@ -2,17 +2,6 @@
 <html>
    <head>
       <style>
-        .page-transition {
-         transform: translateX(-100%);
-         opacity: 0;
-         transition: transform 0.5s ease, opacity 0.5s ease; /* Increased duration to 1 second */
-      }
-
-      /* Final state of the page (visible) */
-      .page-transition.active {
-         transform: translateX(0);
-         opacity: 1;
-      }
            #chatify-popup {
     position: fixed;
     bottom: 20px;
@@ -82,9 +71,10 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
    </head>
    <body>
-    <div class="page-transition">
+    <div data-aos="fade-up" data-aos-duration="600" data-aos-easing="linear">
       <div class="hero_area">
          
         @include('home.header')
@@ -143,7 +133,7 @@
         </div>
      </div>
     </div>
-
+    <div data-aos="fade-up" data-aos-duration="600" data-aos-easing="linear">
       @include ('home.footer')
       
       <div class="cpy_">
@@ -160,6 +150,10 @@
              
          </div>
       </div>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

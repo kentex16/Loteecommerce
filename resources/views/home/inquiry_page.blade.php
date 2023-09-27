@@ -2,15 +2,7 @@
 <html>
    <head>
       <style>
-        .page-transition {
-            transition: transform 0.5s ease, opacity 0.5s ease;
-        }
-
-        /* Hide the page initially */
-        .page-transition {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
+       
 
         /* Show the page when the 'active' class is added */
         .page-transition.active {
@@ -128,9 +120,10 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
    </head>
    <body>
-    <div class="page-transition">
+    <div data-aos="fade-up" data-aos-duration="600" data-aos-easing="linear">
       <div class="hero_area">
          <!-- header section strats -->
         @include('home.header')
@@ -222,6 +215,7 @@
       </div>
       
     
+      <div data-aos="flip-left" data-aos-duration="600" data-aos-easing="linear">
       @include ('home.footer')
       
       <!-- footer end -->
@@ -239,6 +233,10 @@
             
         </div>
      </div>
+     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->

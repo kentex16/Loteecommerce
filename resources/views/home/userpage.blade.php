@@ -110,50 +110,65 @@
          <section id="home">
         @include('home.header')
          </section>
+         <div>
          <!-- end header section -->
          <!-- slider section -->
+         <div data-aos="flip-left" data-aos-duration="600" data-aos-easing="linear">
          <section id="slider" >
          @include ('home.slider')
         
          <!-- end slider section -->
       </div>
+    </div>
     </section>
       <!-- why section -->
+      <div data-aos="fade-right" data-aos-duration="600" data-aos-easing="linear">
       <section id="why">
       @include('home.why')
       </section>
       
       <!-- end why section -->
-      
+    </div>
       <!-- arrival section -->
+      <div data-aos="fade-left" data-aos-duration="600" data-aos-easing="linear">
       <section id="inquiries">
       @include('home.arrival')
       <!-- end arrival section -->
       </section>
       <!-- product section -->
+    </div>
+    <div data-aos="fade-right" data-aos-duration="600" data-aos-easing="linear">
       <section id="product">
       @include('home.product')
       </section>
       <!-- end product section -->
-
+    </div>
       <!-- subscribe section -->
+      <div data-aos="flip-left" data-aos-duration="600" data-aos-easing="linear">
       @include ('home.subscribe')
       <!-- end subscribe section -->
       <!-- client section -->
       <section id="testimonial">
       @include ('home.client')
       </section>
+
+    </div>
       <!-- end client section -->
       <!-- footer start -->
+
+      <div data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom">
+
       @include ('home.footer')
       <!-- footer end -->
       <div class="cpy_">
         
-         
+         </div>
       </p>
    </div>
    </div>
 </div>
+
    <div id="chatify-popup">
       <div id="resize-handle"></div>
       <button id="toggle-chatify">Open Chat</button>

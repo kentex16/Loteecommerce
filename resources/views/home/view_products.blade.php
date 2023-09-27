@@ -2,17 +2,7 @@
 <html>
    <head>
       <style>
-        .page-transition {
-         transform: translateX(-100%);
-         opacity: 0;
-         transition: transform 1.0s ease, opacity 1.0s ease; /* Increased duration to 1 second */
-      }
-
-      /* Final state of the page (visible) */
-      .page-transition.active {
-         transform: translateX(0);
-         opacity: 1;
-      }
+        
          @keyframes floatAnimation {
     0% {
         transform: translateY(0);
@@ -101,24 +91,25 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
    </head>
    <body>
-    <div class="page-transition">
+    <div data-aos="fade-up" data-aos-duration="600" data-aos-easing="linear">
       <div class="hero_area">
          <!-- header section strats -->
         @include('home.header')
          <!-- end header section -->
          <!-- slider section -->
-         
+      
       
          <!-- end slider section -->
-          
+    <div data-aos="flip-left" data-aos-duration="600" data-aos-easing="linear">
       <!-- product section -->
       @include('home.product')
       <!-- end product section -->
-
+    </div>
       
-     
+    <div data-aos="fade-up" data-aos-duration="600" data-aos-easing="linear">
       <!-- end client section -->
       <!-- footer start -->
       @include ('home.footer')
@@ -140,6 +131,10 @@
         
     </div>
  </div>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
       <!-- jQery -->
       <script src="home/js/jquery-3.4.1.min.js"></script>
       <!-- popper js -->
