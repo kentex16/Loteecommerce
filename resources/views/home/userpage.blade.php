@@ -108,7 +108,7 @@
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
-      
+
    </head>
    <body>
      
@@ -121,7 +121,7 @@
          </section>
          <!-- end header section -->
          <!-- slider section -->
-         <section id="slider">
+         <section id="slider" >
          @include ('home.slider')
         
          <!-- end slider section -->
@@ -243,5 +243,6 @@
                 $('.page-transition').addClass('active');
             });
         </script>
+        
    </body>
 </html>

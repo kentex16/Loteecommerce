@@ -197,7 +197,7 @@
                 
                 <div class="div_design">
                     <label for="">File Documents (PDF Supporting Files): </label>
-                    <input type="file" class="form-control" name="file"  required="">
+                    <input type="file" class="form-control" name="file">
                 </div>
                 <div class="form-group">
                   <div class="form-check">

@@ -128,6 +128,7 @@ iframe {
       <link href="home/css/style.css" rel="stylesheet" />
       <!-- responsive style -->
       <link href="home/css/responsive.css" rel="stylesheet" />
+
    </head>
    <body>
     <div class="page-transition">
@@ -172,9 +173,7 @@ iframe {
       
                      @auth
       
-                     <x-app-layout>
-      
-                     </x-app-layout>
+                     
       
                      <form action="{{ route('update.user.role') }}" method="POST">
                         @csrf

@@ -3,6 +3,7 @@
             <div class="row">
                <div class="col-md-4">
                    <div class="full">
+                     
                       <div class="logo_footer">
                         <a href="#"><img width="210" src="images/logo.png" alt="#" /></a>
                       </div>
@@ -21,6 +22,7 @@
                         <div class="col-md-6">
                      <div class="widget_menu">
                         <h3>Menu</h3>
+                        
                         <ul>
                            <li><a href="#home">Home</a></li>
                            <li><a href="#slider">About</a></li>

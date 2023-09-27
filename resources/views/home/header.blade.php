@@ -9,9 +9,9 @@
         }
   
         .dropdown .dropdown-menu {
-                min-width: 250px; /* Adjust the width as needed */
-                max-height: 300px; /* Set a maximum height for the dropdown */
-                overflow-y: auto; /* Enable vertical scrolling if needed */
+                min-width: 250px; 
+                max-height: 300px; 
+                overflow-y: auto; 
             }
 
             .dropdown .dropdown-menu li {
@@ -20,7 +20,7 @@
             }
 
             .dropdown .dropdown-menu li:last-child {
-                border-bottom: none; /* Remove the border for the last item */
+                border-bottom: none; 
             }
 
             .dropdown .dropdown-menu a {
@@ -30,12 +30,15 @@
             }
 
             .dropdown .dropdown-menu a:hover {
-                background-color: #f5f5f5; /* Change the background color on hover */
+                background-color: #f5f5f5; 
             }
 
             .dropdown .dropdown-toggle i {
-                font-size: 18px; /* Adjust the icon size as needed */
+                font-size: 18px; 
             }
+            
+               
+
      
 </style>
 <header class="header_section">
@@ -77,38 +80,55 @@
                        <a class="nav-link" href="#testimonial">Testimonial</a>
                        @endif
                     </li>
-                    <li class="nav-item">
-                       <form class="access-chatify-form" action="http://127.0.0.1:8000/chatify" method="GET">
-                          <button type="submit" class="nav-link">Chat</button>
-                       </form>
-                    </li>
+                     
                  </ul>
+                
+
                  <ul class="navbar-nav ml-auto">
-                    @if (Route::has('login'))
-                    @auth
-                    <x-app-layout></x-app-layout>
-                    <form action="{{ route('update.user.role') }}" method="POST" class="d-flex">
-                       @csrf
-                       <select class="select-button" name="role" id="role">
-                          @if (Auth::user()->role === 'buyer')
-                          <option value="buyer" selected disabled>Buyer</option>
-                          <option value="seller">Seller</option>
-                          @elseif (Auth::user()->role === 'seller')
-                          <option value="buyer">Buyer</option>
-                          <option value="seller" selected disabled>Seller</option>
-                          @endif
-                       </select>
-                       <button class="small-button" type="submit">Update Role</button>
-                    </form>
-                    @else
-                    <li class="nav-item">
-                       <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                       <a class="btn btn-success" href="{{ route('register') }}">Register</a>
-                    </li>
-                    @endauth
-                    @endif
+                  <li class="nav-item">
+                     <form class="access-chatify-form" action="http://127.0.0.1:8000/chatify" method="GET">
+                        <button type="submit" class="nav-link">Chat</button>
+                     </form>
+                 </li>
+                  @if (Route::has('login'))
+                      @auth
+                      <li class="nav-item">
+                          <form action="{{ route('update.user.role') }}" method="POST" class="d-flex">
+                              @csrf
+                              <select class="select-button" name="role" id="role">
+                                  @if (Auth::user()->role === 'buyer')
+                                      <option value="buyer" selected disabled>Buyer</option>
+                                      <option value="seller">Seller</option>
+                                  @elseif (Auth::user()->role === 'seller')
+                                      <option value="buyer">Buyer</option>
+                                      <option value="seller" selected disabled>Seller</option>
+                                  @endif
+                              </select>
+                              <button class="small-button" type="submit">Update Role</button>
+                          </form>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('logout') }}"
+                             onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();"
+                             class="nav-link logout-button">
+                             {{ __('Logout') }}
+                          </a>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                          </form>
+                      </li>
+                      @else
+                      <li class="nav-item">
+                          <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="btn btn-success" href="{{ route('register') }}">Register</a>
+                      </li>
+                      @endif
+                  @endif
+              
+              
                     <li class="nav-item">
                        @if (Auth::check())
                        @php

@@ -1,3 +1,4 @@
+
 <section class="slider_section " style="display: flex; justify-content: center; align-items: center; height: 100vh;">
    
    <div class="slider_bg_box" style="background-color: #ccc;">
@@ -10,6 +11,7 @@
                    <div class="col-md-7 col-lg-6 ">
                       <div class="detail-box">
                          <h1>
+                           
                             <span>
                             LAND YOUR DREAM
                             </span>
