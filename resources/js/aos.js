@@ -1,9 +1,10 @@
-
 import AOS from 'aos';
-import 'aos/dist/aos.css';
+import 'aos/dist/aos.css'; 
 
-// Initialize AOS
+
 AOS.init({
-  duration: 3000,
-  easing: 'linear',
+  duration: 1000, 
+  easing: 'ease-in-out',
+  once: true, 
+  
 });
