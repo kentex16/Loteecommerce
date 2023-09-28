@@ -113,7 +113,7 @@
          <div>
          <!-- end header section -->
          <!-- slider section -->
-         <div data-aos="flip-left" data-aos-duration="600" data-aos-easing="linear">
+         <div data-aos="flip-   " data-aos-duration="600" data-aos-easing="linear">
          <section id="slider" >
          @include ('home.slider')
         

@@ -192,10 +192,12 @@
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
     <title>Lote.ph</title>
 </head>
 <body>
+    <div data-aos="fade-up" data-aos-duration="600" data-aos-easing="linear">
     <header class="header">
         <nav class="nav">
          
@@ -284,5 +286,9 @@
             </div>
         </section>
     </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>
