@@ -28,12 +28,12 @@
     width: 100%;
 }
 #chatify-iframe-container {
-    display: none; /* Initially hide the chat content */
+    display: none; 
     background-color: #fff;
     border: 1px solid #ccc;
     border-top: none;
     border-radius: 0 0 5px 5px;
-    max-height: 400px; /* Set a larger maximum height for the popup */
+    max-height: 400px; 
     overflow: hidden;
     position: relative;
 }
@@ -57,18 +57,18 @@ iframe {
 }
 #resize-handle {
     width: 100%;
-    height: 10px; /* Define the height of the draggable handle */
-    background-color: #007BFF; /* Handle background color */
-    cursor: ns-resize; /* Vertical resize cursor */
+    height: 10px; 
+    background-color: #007BFF; 
+    cursor: ns-resize; 
     position: absolute;
     top: 0;
     left: 0;
 }
 
 .dropdown .dropdown-menu {
-        min-width: 250px; /* Adjust the width as needed */
-        max-height: 300px; /* Set a maximum height for the dropdown */
-        overflow-y: auto; /* Enable vertical scrolling if needed */
+        min-width: 250px; 
+        max-height: 300px; 
+        overflow-y: auto; 
     }
 
     .dropdown .dropdown-menu li {
@@ -77,7 +77,7 @@ iframe {
     }
 
     .dropdown .dropdown-menu li:last-child {
-        border-bottom: none; /* Remove the border for the last item */
+        border-bottom: none; 
     }
 
     .dropdown .dropdown-menu a {
@@ -87,15 +87,15 @@ iframe {
     }
 
     .dropdown .dropdown-menu a:hover {
-        background-color: #f5f5f5; /* Change the background color on hover */
+        background-color: #f5f5f5; 
     }
 
     .dropdown .dropdown-toggle i {
-        font-size: 18px; /* Adjust the icon size as needed */
+        font-size: 18px; 
     }
     .navbar-brand img {
-    width: 280px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 280px; 
+    height: auto; 
 }
 
     </style>
@@ -125,19 +125,24 @@ iframe {
     <div data-aos="fade-up" data-aos-duration="600" data-aos-easing="linear">
       <div class="hero_area">
          <!-- header section strats -->
+         <section id="home">
          @include ('home.seller_header')
-      
+         </section>
        <div data-aos="flip-left" data-aos-duration="600" data-aos-easing="linear">
          <!-- end header section -->
          <!-- slider section -->
+         <section id="slider">
          @include ('home.slider')
          <!-- end slider section -->
+         </section>
        </div>
       </div>
       <!-- why section -->
       <div data-aos="fade-right" data-aos-duration="600" data-aos-easing="linear">
+        <section id="why">
       @include('home.why')
       </div>
+    </section>
       <!-- end why section -->
       
       <!-- arrival section -->
@@ -245,6 +250,32 @@ const maxPopupHeight = 2000; // Adjust this value as needed
             // If "Buyer" is selected, hide the dialog
             document.getElementById('dialog').style.display = 'none';
         }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+       const scrollToTopLinks = document.querySelectorAll('a[href^="#"]');
+       
+       for (const link of scrollToTopLinks) {
+          link.addEventListener('click', function (e) {
+             e.preventDefault();
+             const targetId = this.getAttribute('href').substring(1); // Remove the '#' character
+             const targetElement = document.getElementById(targetId);
+             
+             if (targetElement) {
+                window.scrollTo({
+                   top: targetElement.offsetTop,
+                   behavior: 'smooth', // Use smooth scrolling
+                });
+             }
+          });
+       }
+    });
+ </script>
+ <script>
+    // Use JavaScript to add the 'active' class to trigger the transition
+    $(document).ready(function () {
+        $('.page-transition').addClass('active');
     });
 </script>
    </body>

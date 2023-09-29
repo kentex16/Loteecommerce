@@ -238,11 +238,11 @@
                         @csrf
                         <div class="input">
                             <input id="email" class="input1" type="email" name="email"
-                                :value="old('email')" placeholder="Email" required > 
+                                :value="old('email')" placeholder="Email" required autocomplete="Username" > 
                             
                         </div>
                         <div class="input">
-                            <input id="password" class="input1" type="password" name="password" placeholder="Password" required
+                            <input id="password" class="input1" type="password" name="password" placeholder="Password" required autocomplete="current-password"
                                  >
                             
                         </div>
