@@ -2,8 +2,6 @@
 <html>
    <head>
       <style>
-     
-
       @keyframes floatAnimation {
     0% {
         transform: translateY(0);
@@ -164,7 +162,7 @@
       <div class="cpy_">
         
          </div>
-      </p>
+      </p> 
    </div>
    </div>
 </div>
