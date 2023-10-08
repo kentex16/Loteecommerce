@@ -212,10 +212,10 @@
     <div class="background">
         <section class="home">
             <div class="content">
-                <a href="#" class="logo">Lote.PH</a>
+                <a href="#" class="logo">Lupaco</a>
                 <h2>WELCOME AND INQUIRE</h2>
                 <h3>BUY AND SELL LANDS</h3>
-                <pre> VISIT LOTE.PH FOR LAND LOT INQUIRIES AND SALES</pre>
+                <pre> VISIT Lupaco FOR LAND LOT INQUIRIES AND SALES</pre>
                 <div class="icon">
                     <i class="fa-brands fa-facebook"></i>
                     <i class="fa-brands fa-github"></i>
