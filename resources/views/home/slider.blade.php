@@ -16,10 +16,10 @@
                             LAND YOUR DREAM
                             </span>
                             <br>
-                            on Lupaco
+                            on Pinasland
                          </h1>
                          <p>
-                           Lupaco Ecommerce simplifies the complex process of land transactions. Whether you're buying, selling, or looking to invest in real estate, our platform streamlines the journey, making it easier and more accessible for both buyers and sellers. Say goodbye to the hassle of traditional land deals and embrace a digital solution that saves you time and effort.
+                           Pinasland Ecommerce simplifies the complex process of land transactions. Whether you're buying, selling, or looking to invest in real estate, our platform streamlines the journey, making it easier and more accessible for both buyers and sellers. Say goodbye to the hassle of traditional land deals and embrace a digital solution that saves you time and effort.
                          <div class="btn-box">
                             <a href="{{url('view_products')}}" class="btn1">
                             Shop Now
@@ -40,10 +40,10 @@
                            PLOT YOUR FUTURE
                             </span>
                             <br>
-                            on Lupaco
+                            on Pinasland
                          </h1>
                          <p>
-                           With Lupaco Ecommerce, security is our priority. We provide a trusted environment where landowners can confidently list their properties, and buyers can explore a wide range of options. Our platform incorporates chat gateways to provide communication between the buyer and seller.
+                           With Pinasland Ecommerce, security is our priority. We provide a trusted environment where landowners can confidently list their properties, and buyers can explore a wide range of options. Our platform incorporates chat gateways to provide communication between the buyer and seller.
                          </p>
                          <div class="btn-box">
                             <a href="{{url('view_products')}}" class="btn1">
@@ -65,9 +65,9 @@
                            FIND LAND ONLINE
                             </span>
                             <br>
-                            on Lupaco                         </h1>
+                            on Pinasland                       </h1>
                          <p>
-                           Whether you're a seasoned real estate professional or a first-time land buyer, Lupaco Ecommerce welcomes all. Our user-friendly interface and comprehensive listings cater to diverse needs and preferences. Find your ideal piece of land or sell your property effortlessly, all within a dynamic online marketplace designed to meet the demands of the modern real estate landscape.
+                           Whether you're a seasoned real estate professional or a first-time land buyer, Pinasland Ecommerce welcomes all. Our user-friendly interface and comprehensive listings cater to diverse needs and preferences. Find your ideal piece of land or sell your property effortlessly, all within a dynamic online marketplace designed to meet the demands of the modern real estate landscape.
                          </p>
                          <div class="btn-box">
                             <a href="{{url('view_products')}}" class="btn1">

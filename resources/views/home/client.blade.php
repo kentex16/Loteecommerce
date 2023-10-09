@@ -24,7 +24,7 @@
                          Owner
                       </h6>
                       <p>
-                        As the owner of Lupaco, I'm proud to offer a seamless platform for land transactions. We prioritize the needs of both buyers and sellers, ensuring a smooth and trustworthy experience for all.
+                        As the owner of Pinasland, I'm proud to offer a seamless platform for land transactions. We prioritize the needs of both buyers and sellers, ensuring a smooth and trustworthy experience for all.
                       </p>
                    </div>
                 </div>
@@ -46,7 +46,7 @@
                          Owner
                       </h6>
                       <p>
-                        I understand the importance of finding the right buyers. With Lupaco, I've created a space where fellow landowners can connect with potential buyers easily, making land transactions more efficient.
+                        I understand the importance of finding the right buyers. With Pinasland, I've created a space where fellow landowners can connect with potential buyers easily, making land transactions more efficient.
                       </p>
                    </div>
                 </div>
@@ -68,7 +68,7 @@
                          Owner
                       </h6>
                       <p>
-                        At Lupaco, security is our top priority. As the owner, I've implemented cutting-edge features that not only facilitate client connections but also provide comprehensive protection for their data and transactions. Our platform's advanced security measures guarantee the safety and confidence of all users.
+                        At Pinasland, security is our top priority. As the owner, I've implemented cutting-edge features that not only facilitate client connections but also provide comprehensive protection for their data and transactions. Our platform's advanced security measures guarantee the safety and confidence of all users.
                       </p>
                    </div>
                 </div>

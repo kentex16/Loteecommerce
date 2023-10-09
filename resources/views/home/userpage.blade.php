@@ -8,7 +8,7 @@
         opacity: 0;
     }   
     50% {
-        transform: translateY(-20px); /* Adjust the float height as needed */
+        transform: translateY(-20px); 
         opacity: 0.7;
     }
     100% {
@@ -34,12 +34,12 @@
             width: 100%;
         }
         #chatify-iframe-container {
-            display: none; /* Initially hide the chat content */
+            display: none; 
             background-color: #fff;
             border: 1px solid #ccc;
             border-top: none;
             border-radius: 0 0 5px 5px;
-            max-height: 400px; /* Set a larger maximum height for the popup */
+            max-height: 400px; 
             overflow: hidden;
             position: relative;
             height: 100px;
@@ -66,9 +66,9 @@
         }
         #resize-handle {
             width: 100%;
-            height: 10px; /* Define the height of the draggable handle */
-            background-color: #007BFF; /* Handle background color */
-            cursor: ns-resize; /* Vertical resize cursor */
+            height: 10px; 
+            background-color: #007BFF; 
+            cursor: ns-resize; 
             position: absolute;
             top: 0;
             left: 0;
