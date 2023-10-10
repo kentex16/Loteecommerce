@@ -74,7 +74,7 @@
             left: 0;
         }
       </style>
-      <!-- Basic -->
+      
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <!-- Mobile Metas -->
@@ -142,7 +142,7 @@
       <!-- end product section -->
     </div>
       <!-- subscribe section -->
-      <div data-aos="flip-left" data-aos-duration="600" data-aos-easing="linear">
+      <div data-aos="flip-left" data-aos-duration="700" data-aos-easing="linear">
       @include ('home.subscribe')
       <!-- end subscribe section -->
       <!-- client section -->
